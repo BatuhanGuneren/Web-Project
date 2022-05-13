@@ -1,0 +1,26 @@
+.arkaplan-img{
+    background-image:url(../IMG/Takımımız/bg.png);
+}
+
+
+.renk{
+    background-color: rgb(226, 215, 1);
+}
+
+.renk-navbar{
+    background-color: rgb(255, 251, 168);
+
+}
+
+
+.btn-outline-warning-me {
+    color: rgb(226, 215, 1);
+    border-color: rgb(226, 215, 1);
+  }
+  .btn-outline-warning-me:hover {
+    color: #000;
+    background-color: rgb(226, 215, 1);
+    border-style: solid;
+    border-color: rgb(226, 215, 1);
+    
+  }
