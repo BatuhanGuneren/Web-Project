@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hakkında</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="..\CSS\Main.css">
+        <link rel="stylesheet" type="text/css" href="..\CSS\bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/c20485228a.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    </head>
+    <body class="bg-secondary bg-opacity-10">
+        
+
+        <nav class="navbar navbar-expand-lg navbar-dark renklendirme-main fixed-top">
+            <div class="container-fluid">
+                <a class="navbar text-decoration-none text-white h1" href="Main.html"><i class="fa-solid fa-face-smile"></i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav h2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Main.html#hakkında"><i class="fa-solid fa-circle-info"></i> Hakkımda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Main.html#sehrim"><i class="fa-solid fa-tree-city"></i> Şehrim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Main.html#iletisim"><i class="fa-solid fa-file-signature"></i> İletişim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="..\HTML\Login.html"><i class="fa-solid fa-right-from-bracket"></i> Login</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br><br><br><br><br><br>
+            <div class="container">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        Aramak istediğiniz ip adresini yazın <input type="text" id="goster" onchange="IpGetir(value)" placeholder="max 255.255.255.255" >
+                        <br><br> 
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>ip</td>
+                        <td id="ip"></td>
+                        <td id="bogon"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>hostname</td>
+                        <td id="hostname"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>city</td>
+                        <td id="city"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>region</td>
+                        <td id="region"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>country</td>
+                        <td id="country"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>location</td>
+                        <td id="loc"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>org</td>
+                        <td id="org"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>postal</td>
+                        <td id="postal"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>timezone</td>
+                        <td id="timezone"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+
+
+        <script>
+            
+            function IpGetir(ipadress){
+                fetch('https://ipinfo.io/'+ipadress+'?token=a37992c88ade2e')
+                .then(function(resp) {return resp.json()})
+                .then(function(data){
+                    IpGoster(data);
+                })
+            }
+            function IpGoster(yaz){
+                
+                document.getElementById("ip").innerHTML = yaz.ip;
+               
+                document.getElementById("hostname").innerHTML = yaz.hostname;
+                document.getElementById("city").innerHTML = yaz.city;
+                document.getElementById("region").innerHTML = yaz.region;
+                document.getElementById("country").innerHTML = yaz.country;
+                document.getElementById("loc").innerHTML = yaz.loc;
+                document.getElementById("org").innerHTML = yaz.org;
+                document.getElementById("postal").innerHTML = yaz.postal;
+                document.getElementById("timezone").innerHTML = yaz.timezone;
+                if(yaz.bogon==undefined){
+                  document.getElementById("bogon").innerHTML = "";
+                }
+                else{
+                  document.getElementById("bogon").innerHTML = "bogon ip";
+                }
+            }
+        </script>
+
+        
+        <br><br><br><br><br>
+
+
+        <footer class="bg-info bg-opacity-25 text-center">
+            @Copyright 2022 || Bahri Batuhan Güneren
+            <br><br>
+        </footer>
+    </body>
+</html>
